@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for video in videos %}
+        {% if video.author == current_user %}
+            <article class="media content-section">
+            <div class="media-body">
+                <div class="article-metadata">
+                <small class="text-muted">{{ video.date.strftime('%Y-%m-%d') }}</small>
+                </div>
+                <h2><a class="article-title" href="{{ url_for('show_video', video_id=video.id) }}">{{ video.name }}</a></h2>
+                <p class="article-content">{{ video.description }}</p>
+            </div>
+            </article>
+        {% endif %}
+    {% endfor %}
+{% endblock content %}
